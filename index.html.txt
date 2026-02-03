@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Amor ❤️</title>
+    <style>
+        :root {
+            --color-sobre: #ef5350;
+            --color-sobre-oscuro: #d32f2f;
+            --color-papel: #fff9f9;
+            --color-texto: #2c3e50;
+        }
+
+        body { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            background-color: #ffebee; 
+            margin: 0; 
+            font-family: 'Georgia', serif; 
+            overflow-x: hidden;
+        }
+
+        .container { text-align: center; width: 100%; }
+
+        .envelope-wrapper { 
+            background: var(--color-sobre); 
+            height: 200px; 
+            width: 300px; 
+            position: relative; 
+            margin: 60px auto; 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2); 
+        }
+
+        /* Tapa del sobre */
+        .envelope::before { 
+            content: ""; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            z-index: 4; 
+            border-top: 110px solid var(--color-sobre); 
+            border-left: 150px solid transparent; 
+            border-right: 150px solid transparent; 
+            transform-origin: top; 
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+        /* Cuerpo del sobre */
+        .envelope::after { 
+            content: ""; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            z-index: 3; 
+            border-bottom: 100px solid var(--color-sobre-oscuro); 
+            border-left: 150px solid #ff8a80; 
+            border-right: 150px solid #ff8a80; 
+        }
+
+        /* La carta con el mensaje */
+        .letter { 
+            position: absolute; 
+            bottom: 5px; 
+            left: 5%; 
+            width: 90%; 
+            height: 90%; 
+            background: var(--color-papel); 
+            z-index: 2; 
+            transition: all 0.7s ease; 
+            padding: 25px 15px; 
+            box-sizing: border-box; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            overflow-y: auto;
+            border: 1px solid #f1f1f1;
+        }
+
+        .text { 
+            font-size: 13px; 
+            color: var(--color-texto); 
+            line-height: 1.6; 
+            text-align: left;
+            white-space: pre-line; /* Mantiene los saltos de línea */
+        }
+
+        /* Animación de apertura */
+        .active .envelope::before { 
+            transform: rotateX(180deg); 
+            z-index: 1; 
+        }
+
+        .active .letter { 
+            transform: translateY(-160px); 
+            z-index: 5; 
+            height: 380px; /* Se agranda para mostrar el mensaje */
+        }
+
+        button { 
+            margin-top: 20px;
+            padding: 12px 30px; 
+            background: #c62828; 
+            color: white; 
+            border: none; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            font-weight: bold; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        button:hover { background: #b71c1c; transform: scale(1.05); }
+
+        /* Scrollbar suave para la carta */
+        .letter::-webkit-scrollbar { width: 4px; }
+        .letter::-webkit-scrollbar-thumb { background: #ffcdd2; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="envelope-wrapper" id="envelope">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text" id="mensaje">
+Sé que la vida a veces se viste de incertidumbre, que el corazón se cansa y se resiente, y que nuestros pensamientos pueden jugar con la culpa. Pero entre todo eso, hay una verdad que permanece inquebrantable: solo quiero estar contigo.
+
+A tu lado siento la calma que calma mis tempestades, la seguridad que me da fuerza, y una alegría profunda que ninguna palabra alcanza a describir. Eres el amor que siempre soñé, la mujer con la que quiero caminar todos mis días, la dueña de mi futuro y de mis sueños más sinceros.
+
+Hoy comienza un capítulo nuevo, una etapa donde cada gesto será para ti, donde cada beso, cada abrazo y cada caricia serán semillas que florezcan en nuestro amor. Quiero reconquistar cada rincón de ti, ganarme tu risa, tu mirada y tu alma, y dejar mi esencia tatuada en tu corazón, así como tú vives ya grabada en el mío.
+
+Te amo con la certeza de quien ha encontrado su hogar en el latido de otro corazón, y prometo recorrer contigo este camino, cuidando cada instante, valorando cada suspiro, y amándote más allá de lo que las palabras pueden alcanzar.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="toggleLetter()">Abrir para ti 💌</button>
+    </div>
+
+    <script>
+        function toggleLetter() {
+            const env = document.getElementById('envelope');
+            env.classList.toggle('active');
+            const btn = document.querySelector('button');
+            btn.innerText = env.classList.contains('active') ? 'Cerrar carta' : 'Abrir para ti 💌';
+        }
+    </script>
+</body>
+</html>
